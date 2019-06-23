@@ -82,11 +82,23 @@ stats_repos.plot.bar(x="name",y="stargazers_count",
 ```
 
 <p align="center">
-  <img src="https://github.com/JustinValet/ApiGitHub_Connector/blob/master/Figure_1.png" width="350">
+  <img src="https://github.com/JustinValet/ApiGitHub_Connector/blob/master/doc/Figure_1.png" width="350">
 </p>
 
-Add additional notes about how to deploy this on a live system
 
+* Use methods for extracting the number of files of the pandas repository
+
+```
+# This method extract recursively the number of files 
+# in each sub-directory of the pandas repository
+print(git_hub_connection.count_number_files(repo="pandas"))
+
+>>> 1561
+
+```
+
+## Documentaion 
+*comming soon*
 
 ## Authors
 
