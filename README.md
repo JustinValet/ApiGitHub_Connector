@@ -97,7 +97,7 @@ print(git_hub_connection.count_number_files(repo="pandas"))
 
 ```
 
-## Documentaion 
+## Documentation 
 *comming soon*
 
 ## Authors
