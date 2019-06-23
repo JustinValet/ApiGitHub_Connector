@@ -7,16 +7,21 @@ class connect_to_GitHub_API:
     def __init__(self, user, pwd):
         self.user = user
         self.pwd = pwd
-        self._api_session = create_session(self.user, self.pwd)
+        self._api_session = create_session(self.user,
+                                           self.pwd)
 
 class GitHub_API_Connector(connect_to_GitHub_API):
 
     def __init__(self, user, pwd, user_name):
         self._user_name = user_name
         connect_to_GitHub_API.__init__(self, user, pwd)
-        self._user_stats = compile_repos_stats(self._api_session, self._user_name)
+        self._user_stats = compile_repos_stats(self._api_session,
+                                               self._user_name)
         self._repos_names = list(self._user_stats["name"])
-        self._user_stats = update_stats(self._api_session, self._user_stats, self._repos_names, self._user_name)
+        self._user_stats = update_stats(self._api_session,
+                                        self._user_stats,
+                                        self._repos_names,
+                                        self._user_name)
 
     def extract_contributors_stats(self, repo, **kwargs):
 
@@ -36,14 +41,20 @@ class GitHub_API_Connector(connect_to_GitHub_API):
                           other_option=other_option)
         print(url)
 
-        _output = compile_by_page(self._api_session, url, _transform_function=contributors_commits_transformer)
+        _output = compile_by_page(self._api_session,
+                                  url,
+                                  _transform_function=contributors_commits_transformer)
 
         return _output
 
     def count_number_files(self, repo):
 
         num_files = 0
-        num_files = compute_files(self._api_session, self._user_name, repo, None, num_files)
+        num_files = compute_files(self._api_session,
+                                  self._user_name,
+                                  repo,
+                                  None,
+                                  num_files)
 
         return num_files
 
@@ -68,7 +79,8 @@ class GitHub_API_Connector(connect_to_GitHub_API):
                           set_per_page_limit=True,
                           iterate_per_page=True)
 
-        _output = compile_by_page(self._api_session, url, _transform_function=release_transformer)
+        _output = compile_by_page(self._api_session, url,
+                                  _transform_function=release_transformer)
 
         return _output
 
@@ -89,7 +101,9 @@ class GitHub_API_Connector(connect_to_GitHub_API):
                           iterate_per_page=True,
                           other_option=other_option)
 
-        _output = compile_by_page(self._api_session, url, _transform_function=pull_request_transformer)
+        _output = compile_by_page(self._api_session,
+                                  url,
+                                  _transform_function=pull_request_transformer)
 
         return _output
 
