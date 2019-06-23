@@ -134,3 +134,26 @@ def release_transformer(data):
     _output = pd.concat([data[["name", "published_at", "created_at", "tag_name"]],
                                 _works_data[["login"]]], axis=1)
     return _output
+
+
+def update_stats(session, user_stats, list_names, user_name):
+    repos_stats_issues = dict()
+    repos_stats_pull_requests = dict()
+
+    for repo in list_names:
+        repos_stats_issues[repo] = session.get(
+            "https://api.github.com/search/issues?q=repo:{}/{}+type:issue".format(user_name, repo)).json()[
+            'total_count']
+        repos_stats_pull_requests[repo] = session.get(
+            "https://api.github.com/search/issues?q=repo:{}/{}+type:pr".format(user_name, repo)).json()['total_count']
+
+    df1 = pd.DataFrame.from_dict(repos_stats_issues, orient='index')
+    df2 = pd.DataFrame.from_dict(repos_stats_pull_requests, orient='index')
+    df1.columns = ["total_issues"]
+    df2.columns = ["total_pull_requests"]
+    df_end = pd.merge(df1, df2, left_index=True, right_index=True, how="inner"). \
+        reset_index(drop=False).rename(columns={"index": "name"})
+
+    user_stats = pd.merge(user_stats, df_end, how='inner', on="name")
+
+    return user_stats
