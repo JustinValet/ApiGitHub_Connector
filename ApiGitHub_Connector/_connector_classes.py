@@ -27,8 +27,13 @@ class GitHub_API_Connector(connect_to_GitHub_API):
         else:
             other_option = "anon=1"+"&"+add_other_option
 
-        url = url_builder(action_type="repos", user_name=self._user_name, repo_name=repo,
-                            search_path="contributors", set_per_page_limit=True, iterate_per_page=True, other_option=other_option)
+        url = url_builder(action_type="repos",
+                          user_name=self._user_name,
+                          repo_name=repo,
+                          search_path="contributors",
+                          set_per_page_limit=True,
+                          iterate_per_page=True,
+                          other_option=other_option)
         print(url)
 
         _output = compile_by_page(self._api_session, url, _transform_function=contributors_commits_transformer)
@@ -43,8 +48,12 @@ class GitHub_API_Connector(connect_to_GitHub_API):
         return num_files
 
     def extract_branches(self, repo):
-        url = url_builder(action_type="repos", user_name=self._user_name, repo_name=repo,
-                            search_path="branches")
+
+        url = url_builder(action_type="repos",
+                          user_name=self._user_name,
+                          repo_name=repo,
+                        search_path="branches")
+
         r = self._api_session.get(url)
         data = pd.DataFrame(r.json())
         data = data[["name", "protected"]]
@@ -52,8 +61,12 @@ class GitHub_API_Connector(connect_to_GitHub_API):
         return data
 
     def extract_releases(self, repo):
-        url = url_builder(action_type="repos", user_name=self._user_name, repo_name=repo,
-                            search_path="releases", set_per_page_limit=True, iterate_per_page=True)
+        url = url_builder(action_type="repos",
+                          user_name=self._user_name,
+                          repo_name=repo,
+                          search_path="releases",
+                          set_per_page_limit=True,
+                          iterate_per_page=True)
 
         _output = compile_by_page(self._api_session, url, _transform_function=release_transformer)
 
@@ -68,8 +81,13 @@ class GitHub_API_Connector(connect_to_GitHub_API):
         else:
             other_option = "state=all"+"&"+add_other_option
 
-        url = url_builder(action_type="repos", user_name=self._user_name, repo_name=repo,
-                          search_path="pulls", set_per_page_limit=True, iterate_per_page=True, other_option=other_option)
+        url = url_builder(action_type="repos",
+                          user_name=self._user_name,
+                          repo_name=repo,
+                          search_path="pulls",
+                          set_per_page_limit=True,
+                          iterate_per_page=True,
+                          other_option=other_option)
 
         _output = compile_by_page(self._api_session, url, _transform_function=pull_request_transformer)
 

@@ -100,8 +100,11 @@ def compute_files(session, user, repo, dir_path, num_files):
 
 
 def compile_repos_stats(session, user_name):
-    url = url_builder(action_type="users", user_name=user_name,
-                      search_path="repos", set_per_page_limit=True, iterate_per_page=True)
+    url = url_builder(action_type="users",
+                      user_name=user_name,
+                      search_path="repos",
+                      set_per_page_limit=True,
+                      iterate_per_page=True)
 
     _output_stats = compile_by_page(session, url, _transform_function=repos_stats_transformer)
 
