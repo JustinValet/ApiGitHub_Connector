@@ -12,7 +12,7 @@ setup(
   description='This packages is a wrapper for the GitHub API',
   author='Justin Valet',
   author_email='jv.datamail@gmail.com',
-  version= '0.0.1',
+  version='0.0.1',
   classifiers=classifiers,
   requierements=requierements,
   packages=find_packages(),
