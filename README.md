@@ -100,6 +100,11 @@ print(git_hub_connection.count_number_files(repo="pandas"))
 ## Documentation 
 *comming soon*
 
+## Further works & improvements 
+* simultaneous calls for multi-pages requests using multi-threading (in progress)
+* data extraction from organizations and private accounts 
+* object for interacting with GitHub GraphQL API v4
+
 ## Authors
 
 * **Justin Valet** - *Data Scientist* 
