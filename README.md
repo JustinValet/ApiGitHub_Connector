@@ -1,19 +1,19 @@
 # ApiGitHub_Connector
 
-This python package helps connecting to [GitHub V4 API](https://developer.github.com/v4/) and extracting data from a github **public** project and his associated repositories.
+This python package helps connecting to [GitHub API v4](https://developer.github.com/v4/) and extracting data from github **public** projects and their associated repositories.
 
 ## Getting Started
 
-Follow the followings instructions in order to install and use the python package ApiGitHub_Connector.
+The followings instructions help installing and use the python package ApiGitHub_Connector.
 
 ### Prerequisites
 
-* It is requiered to have a python 3.6 installed on your machine.
-* It is advised to have a [GitHub account](https://github.com) to better use the API.  
+* A python 3.6 installed on your machine is requiered.
+* It is recommended to have a [GitHub account](https://github.com) to better use the API.  
 
 ### Installing
 
-It is advised to install the package on a created 3.6 python environment (using virtual env or anaconda)
+It is recommended to install the package within a created 3.6 python environment (using virtual env or anaconda)
 
 * the package can be directly installed from GitHub using:
 
@@ -23,9 +23,9 @@ pip install git+https://github.com/JustinValet/ApiGitHub_Connector.git
 
 ## Example by usage
 
-In this example, the ApiGitHub_Connector will extract some statistics from  the famous [Pandas project](https://github.com/pandas-dev) on GitHub.
+In this example, the ApiGitHub_Connector will extract some statistics from the famous [Pandas project](https://github.com/pandas-dev) on GitHub.
 
-* connection the to pandas project using GitHub V4 API
+* Connection to the Pandas project using GitHub API v4
 
 ```
 # import the package
@@ -43,7 +43,7 @@ git_hub_connection = GitHub_API_Connector(user=user, pwd=pwd, user_name=project_
 >>> the api scrapper did his job in 0.4506540298461914 seconds
 ```
 
-* Get basics statistics from repositories of the Pandas project
+* Get basic statistics from repositories of the Pandas project
 
 ```
 # the ApiGitHub_Connector automatically extracts
@@ -68,7 +68,7 @@ print(stats_repos)
 
 ```
 
-* plot the number of stars per repository
+* Plot the number of stars per repository
 
 ```
 import pandas as pd
@@ -86,7 +86,7 @@ stats_repos.plot.bar(x="name",y="stargazers_count",
 </p>
 
 
-* Use methods for extracting the number of files of the pandas repository
+* Use a method for extracting the number of files of the pandas repository
 
 ```
 # This method extract recursively the number of files 
