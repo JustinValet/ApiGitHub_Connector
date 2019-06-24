@@ -1,6 +1,6 @@
 # ApiGitHub_Connector
 
-This python package helps connecting to [GitHub API v4](https://developer.github.com/v4/) and extracting data from github **public** projects and their associated repositories.
+This python package helps connecting to [GitHub REST API v3](https://developer.github.com/v3/) and extracting data from github **public** projects and their associated repositories.
 
 ## Getting Started
 
@@ -25,7 +25,7 @@ pip install git+https://github.com/JustinValet/ApiGitHub_Connector.git
 
 In this example, the ApiGitHub_Connector will extract some statistics from the famous [Pandas project](https://github.com/pandas-dev) on GitHub.
 
-* Connection to the Pandas project using GitHub API v4
+* Connection to the Pandas project using GitHub REST API v3
 
 ```
 # import the package
